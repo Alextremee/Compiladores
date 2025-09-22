@@ -1,1 +1,20 @@
-hola mundo 123
+"Este es un comentario inicial que debe ser ignorado por completo"
+
+entero variable_1 = 125;
+flotante numero_real = -15@88@@+2;
+cadena saludo = ¿Hola, mundo?;
+
+si (variable_1 >: 100) {
+    entero resultado_final = 0;
+    resultado_final += variable_1;
+    "comentario intermedio"
+}
+
+mientras ( 1 ) {
+    salir;
+}
+
+"La siguiente linea contiene un error lexico"
+entero Error_Variable = 10; "El identificador usa mayusculas"
+
+% $ // :: !=
