@@ -1,20 +1,16 @@
-"Este es un comentario inicial que debe ser ignorado por completo"
-
-entero variable_1 = 125;
-flotante numero_real = -15@88@@+2;
-cadena saludo = ¿Hola, mundo?;
-
-si (variable_1 >: 100) {
-    entero resultado_final = 0;
-    resultado_final += variable_1;
-    "comentario intermedio"
-}
-
-mientras ( 1 ) {
-    salir;
-}
-
-"La siguiente linea contiene un error lexico"
-entero Error_Variable = 10; "El identificador usa mayusculas"
-
-% $ // :: !=
+entero X = 5;
+flotante _y = 3@14;
+si :: x ¿: 10;
+a_ = 1;
+x += 0@;
+x ¬+ 2;
+y != 3;
+z && 4;
+select >: 8;
+"esto es un comentario válido"
+¿Cadena sin cierre
+coma , punto .
+suma = 1 + 2;
+logico \ 7;
+rel >= 9;
+a ¬+¬ b;
