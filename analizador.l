@@ -101,7 +101,7 @@ letra_min [a-z]
 
 
 "::" {   Token(9, 0); }
-"¿:" { Token(9, 1); }
+"¿:" {   Token(9, 1); }
 ">" {   Token(9, 2); }
 "<" {   Token(9, 3); }
 ">:" {   Token(9, 4); }
