@@ -67,7 +67,7 @@ letra_min [a-z]
 
 
 [+\-]?{digito}+ {   Token(1, atoi(yytext)); }
-{letra_min}+(_?{letra_min}+)*{digito}* {   Token(2, buscar(yytext)); }
+{letra_min}+(_{letra_min}+)*{digito}* {   Token(2, buscar(yytext)); }
 [+\-]?{digito}+"@"{digito}+("@@"[+\-]?{digito}+)? {   Token(6, insertarReal(yytext)); }
 "¿"[^?\n]*"?" {   Token(7, insertarCadena(yytext)); }
 
@@ -81,6 +81,7 @@ letra_min [a-z]
 "<<=" {   Token(3, 6); }
 ">>=" {   Token(3, 7); }
 "&=" {   Token(3, 8); }
+"^=" {   Token(3, 9); }
 "|=" {   Token(3, 10); }
 
 
@@ -100,7 +101,7 @@ letra_min [a-z]
 
 
 "::" {   Token(9, 0); }
-"!=" {   Token(9, 1); }
+"¿:" { Token(9, 1); }
 ">" {   Token(9, 2); }
 "<" {   Token(9, 3); }
 ">:" {   Token(9, 4); }
@@ -108,6 +109,7 @@ letra_min [a-z]
 
 
 "$" {   Token(4, (int)'$'); }
+"%" {   Token(4, (int)'%'); }
 "(" {   Token(4, (int)'('); }
 ")" {   Token(4, (int)')'); }
 "{" {   Token(4, (int)'{'); }
