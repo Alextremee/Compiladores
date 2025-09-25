@@ -64,11 +64,11 @@ letra_min [a-z]
 { /* --- Manejo de separadores --- */ }
 [ \t\n]+ { /* Se ignora cualquier espacio, tabulador o salto de línea */ }
 
-/* --- Manejo de comentarios --- */
-   Se definen como texto entre comillas dobles */
+{ /* --- Manejo de comentarios --- 
+   Se definen como texto entre comillas dobles */ }
 \"[^"\n]*\" { /* Se ignoran los comentarios entre comillas */ }
 
-/* --- Palabras reservadas --- */
+{ /* --- Palabras reservadas --- */ }
 "cadena" {   Token(0, 0); }
 "caso" {   Token(0, 1); }
 "entero" {   Token(0, 2); }
@@ -83,23 +83,23 @@ letra_min [a-z]
 "si" {   Token(0, 11); }
 "vacio" {   Token(0, 12); }
 
-/* --- Constantes enteras --- */
+{ /* --- Constantes enteras --- */ }
 [+\-]?{digito}+ {   Token(1, atoi(yytext)); }
 
-/* --- Identificadores --- 
+{ /* --- Identificadores ---
    Comienzan con letras minúsculas, 
-   pueden incluir guiones bajos y terminan opcionalmente con dígitos */
+   pueden incluir guiones bajos y terminan opcionalmente con dígitos */ }
 {letra_min}+(_{letra_min}+)*{digito}* {   Token(2, buscar(yytext)); }
 
-/* --- Constantes reales --- 
-   Notación con '@' y parte opcional de exponente con '@@' */
+{ /* --- Constantes reales --- 
+   Notación con '@' y parte opcional de exponente con '@@' */ }
 [+\-]?{digito}+"@"{digito}+("@@"[+\-]?{digito}+)? {   Token(6, insertarReal(yytext)); }
 
-/* --- Constantes de cadena --- 
-   Se encierran con símbolos ¿ y ? */
+{ /* --- Constantes de cadena --- 
+   Se encierran con símbolos ¿ y ? */ }
 "¿"[^?\n]*"?" {   Token(7, insertarCadena(yytext)); }
 
-/* --- Operadores de asignación --- */
+{ /* --- Operadores de asignación --- */ }
 "=" {   Token(3, 0); }
 "*=" {   Token(3, 1); }
 "/=" {   Token(3, 2); }
@@ -113,12 +113,12 @@ letra_min [a-z]
 "|=" {   Token(3, 10); }
 
 
-/* --- Operadores lógicos --- */
+{ /* --- Operadores lógicos --- */ }
 "\\" {   Token(5, 0); }
 "//" {   Token(5, 1); }
 "||" {   Token(5, 2); }
 
-/* --- Operadores aritméticos (notación especial con ¬) --- */
+{ /* --- Operadores aritméticos (notación especial con ¬) --- */ }
 "¬+¬" { Token(8, 0); }
 "¬-¬" { Token(8, 1); }
 "¬*¬" { Token(8, 2); }
@@ -126,7 +126,7 @@ letra_min [a-z]
 "¬^¬" { Token(8, 4); }
 "¬%¬" { Token(8, 5); }
 
-/* --- Operadores relacionales --- */
+{ /* --- Operadores relacionales --- */ }
 "::" {   Token(9, 0); }
 "¿:" {   Token(9, 1); }
 ">" {   Token(9, 2); }
@@ -134,7 +134,7 @@ letra_min [a-z]
 ">:" {   Token(9, 4); }
 "<:" {   Token(9, 5); }
 
-/* --- Símbolos especiales --- */
+{ /* --- Símbolos especiales --- */ }
 "$" {   Token(4, (int)'$'); }
 "%" {   Token(4, (int)'%'); }
 "(" {   Token(4, (int)'('); }
@@ -146,7 +146,7 @@ letra_min [a-z]
 ";" {   Token(4, (int)';'); }
 "." {   Token(4, (int)'.'); }
 
-/* --- Manejo de errores léxicos --- */
+{ /* --- Manejo de errores léxicos --- */ }
 . { printf("Error Léxico en la línea %d: Símbolo no reconocido '%s'\n", yylineno, yytext); }
 
 %%
