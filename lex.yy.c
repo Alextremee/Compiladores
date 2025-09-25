@@ -608,10 +608,19 @@ char *yytext;
 #include <stdlib.h>
 #include <string.h>
 
+/*          Estructra para representar un Token
+   clase: tipo de token (reservada, identificador, operador, etc.)
+   valor: referencia (posición en tabla o valor numérico) */
+
 typedef struct {
     int clase;
     int valor;
 } token;
+
+/*     Estructura para la Tabla de Símbolos 
+   pos: posición en la tabla
+   nom: nombre del identificador
+   tipo: tipo de dato (inicialmente -1) */
 
 typedef struct {
     int  pos;
@@ -619,12 +628,20 @@ typedef struct {
     int  tipo;
 } Simbolo;
 
+/*    Estructura para las Tablas de Literales (cadenas y reales)  
+   pos: posición en la tabla
+   dato: contenido del literal */
+
 typedef struct {
     int  pos;
     char *dato;
 } Literal;
 
+/*  Definicion de capacidad máxima de tablas  */
+
 #define TABLA 1000
+
+/*  Declaración de Tablas  */
 
 Simbolo tabladeSimbolos[TABLA];
 int     possimbolo = 0;
@@ -635,6 +652,8 @@ int     posCadena = 0;
 Literal tabladeReales[TABLA];
 int     posReales = 0;
 
+/* Prototipos de funciones auxiliares */
+
 void Token(int clase, int valor);
 int  buscar(const char *id);
 int  insertarSimbolo(const char *s);
@@ -643,12 +662,19 @@ int  insertarReal(const char *real);
 void mostrarTablaDeSimbolos(void);
 void mostrarTablasDeLiterales(void);
 
+/* yyin: archivo de entrada de Flex */
 extern FILE *yyin;
+
+/* Variable externa de Flex para obtener el número de línea */
 extern int   yylineno;
 
+/* En caso de que nuestra tabla se llene va a mandar un mensaje y termina la ejecución */
+
 static void tablaLlena(const char *msg) { fputs(msg, stderr); exit(1); }
-#line 651 "lex.yy.c"
-#line 652 "lex.yy.c"
+
+#line 676 "lex.yy.c"
+/*  Definiciones de Expresiones Regulares  */
+#line 678 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -865,10 +891,10 @@ YY_DECL
 		}
 
 	{
-#line 51 "analizador.l"
+#line 78 "analizador.l"
 
 
-#line 872 "lex.yy.c"
+#line 898 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -938,300 +964,300 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 /* rule 1 can match eol */
 YY_RULE_SETUP
-#line 53 "analizador.l"
-{ }
+#line 80 "analizador.l"
+{ } // Ignorar espacios
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 54 "analizador.l"
-{ }
+#line 81 "analizador.l"
+{ } // Ignorar comentario entre comillas
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 56 "analizador.l"
-{ Token(0, 0); }
+#line 85 "analizador.l"
+{ Token(0, 0); } // Sección de la clase 0: Palabras reservadas 
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 57 "analizador.l"
+#line 86 "analizador.l"
 { Token(0, 1); }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 58 "analizador.l"
+#line 87 "analizador.l"
 { Token(0, 2); }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 59 "analizador.l"
+#line 88 "analizador.l"
 { Token(0, 3); }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 60 "analizador.l"
+#line 89 "analizador.l"
 { Token(0, 4); }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 61 "analizador.l"
+#line 90 "analizador.l"
 { Token(0, 5); }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 62 "analizador.l"
+#line 91 "analizador.l"
 { Token(0, 6); }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 63 "analizador.l"
+#line 92 "analizador.l"
 { Token(0, 7); }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 64 "analizador.l"
+#line 93 "analizador.l"
 { Token(0, 8); }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 65 "analizador.l"
+#line 94 "analizador.l"
 { Token(0, 9); }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 66 "analizador.l"
+#line 95 "analizador.l"
 { Token(0,10); }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 67 "analizador.l"
+#line 96 "analizador.l"
 { Token(0,11); }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 68 "analizador.l"
-{ Token(0,12); }
+#line 97 "analizador.l"
+{ Token(0,12); } 
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 70 "analizador.l"
-{ Token(1, atoi(yytext)); }
+#line 99 "analizador.l"
+{ Token(1, atoi(yytext)); } // Constantes enteras. Formado por dígitos del 0 al 9. Puede tener signo + o -
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 72 "analizador.l"
-{
+#line 101 "analizador.l"
+{ 
     int pos = buscar(yytext);
     if (pos < 0) pos = insertarSimbolo(yytext);
     Token(2, pos);
-}
+} // identificadores
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 78 "analizador.l"
+#line 107 "analizador.l"
 {
     int idx = insertarReal(yytext);
-    Token(6, idx);
-}
+    Token(6, idx); 
+} // Constantes Reales: 
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 82 "analizador.l"
+#line 112 "analizador.l"
 {
     int idx = insertarCadena(yytext);
     Token(7, idx);
-}
+}  // cadenas con delimitadores ¿ ?
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 87 "analizador.l"
+#line 117 "analizador.l"
 { Token(3, 6); }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 88 "analizador.l"
+#line 118 "analizador.l"
 { Token(3, 7); }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 89 "analizador.l"
+#line 119 "analizador.l"
 { Token(3, 1); }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 90 "analizador.l"
+#line 120 "analizador.l"
 { Token(3, 2); }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 91 "analizador.l"
+#line 121 "analizador.l"
 { Token(3, 3); }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 92 "analizador.l"
+#line 122 "analizador.l"
 { Token(3, 4); }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 93 "analizador.l"
+#line 123 "analizador.l"
 { Token(3, 5); }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 94 "analizador.l"
+#line 124 "analizador.l"
 { Token(3, 8); }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 95 "analizador.l"
+#line 125 "analizador.l"
 { Token(3, 9); }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 96 "analizador.l"
+#line 126 "analizador.l"
 { Token(3,10); }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 97 "analizador.l"
+#line 127 "analizador.l"
 { Token(3, 0); }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 99 "analizador.l"
+#line 129 "analizador.l"
 { Token(5, 0); }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 100 "analizador.l"
+#line 130 "analizador.l"
 { Token(5, 1); }
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 101 "analizador.l"
+#line 131 "analizador.l"
 { Token(5, 2); }
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 103 "analizador.l"
+#line 133 "analizador.l"
 { Token(8, 0); }
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 104 "analizador.l"
+#line 134 "analizador.l"
 { Token(8, 1); }
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 105 "analizador.l"
+#line 135 "analizador.l"
 { Token(8, 2); }
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 106 "analizador.l"
+#line 136 "analizador.l"
 { Token(8, 3); }
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 107 "analizador.l"
+#line 137 "analizador.l"
 { Token(8, 4); }
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 108 "analizador.l"
+#line 138 "analizador.l"
 { Token(8, 5); }
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 110 "analizador.l"
+#line 140 "analizador.l"
 { Token(9, 0); }
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 111 "analizador.l"
+#line 141 "analizador.l"
 { Token(9, 1); }
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 112 "analizador.l"
+#line 142 "analizador.l"
 { Token(9, 4); }
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 113 "analizador.l"
+#line 143 "analizador.l"
 { Token(9, 5); }
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 114 "analizador.l"
+#line 144 "analizador.l"
 { Token(9, 2); }
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 115 "analizador.l"
+#line 145 "analizador.l"
 { Token(9, 3); }
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 117 "analizador.l"
+#line 147 "analizador.l"
 {   Token(4, (int)'$'); }
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 118 "analizador.l"
+#line 148 "analizador.l"
 {   Token(4, (int)'%'); }
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 119 "analizador.l"
+#line 149 "analizador.l"
 {   Token(4, (int)'('); }
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 120 "analizador.l"
+#line 150 "analizador.l"
 {   Token(4, (int)')'); }
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 121 "analizador.l"
+#line 151 "analizador.l"
 {   Token(4, (int)'{'); }
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 122 "analizador.l"
+#line 152 "analizador.l"
 {   Token(4, (int)'}'); }
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 123 "analizador.l"
+#line 153 "analizador.l"
 {   Token(4, (int)'['); }
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 124 "analizador.l"
+#line 154 "analizador.l"
 {   Token(4, (int)']'); }
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 125 "analizador.l"
+#line 155 "analizador.l"
 {   Token(4, (int)';'); }
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 126 "analizador.l"
+#line 156 "analizador.l"
 {   Token(4, (int)'.'); }
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 128 "analizador.l"
+#line 158 "analizador.l"
 { fprintf(stderr,"Error Léxico en la línea %d: %s\n",yylineno,yytext); }
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 130 "analizador.l"
+#line 160 "analizador.l"
 ECHO;
 	YY_BREAK
-#line 1235 "lex.yy.c"
+#line 1261 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2248,8 +2274,10 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 130 "analizador.l"
+#line 160 "analizador.l"
 
+
+/* Búsqueda lineal en la tabla de símbolos  */
 
 int buscar(const char *id) {
     for (int i = 0; i < possimbolo; ++i) {
@@ -2257,6 +2285,8 @@ int buscar(const char *id) {
     }
     return -1;
 }
+
+/* Inserción en tabla de símbolos */
 
 int insertarSimbolo(const char *s) {
     if (possimbolo >= TABLA) tablaLlena("Tabla de símbolos llena\n");
@@ -2266,18 +2296,25 @@ int insertarSimbolo(const char *s) {
     return possimbolo++;
 }
 
+/* Inserción en tabla de cadenas */
+
 int insertarCadena(const char *cadena) {
     if (posCadena >= TABLA) tablaLlena("Tabla de cadenas llena\n");
     tabladeCadenas[posCadena].pos  = posCadena;
     tabladeCadenas[posCadena].dato = strdup(cadena);
     return posCadena++;
 }
+
+/* Inserción en tabla de reales  */
+
 int insertarReal(const char *real) {
     if (posReales >= TABLA) tablaLlena("Tabla de reales llena\n");
     tabladeReales[posReales].pos  = posReales;
     tabladeReales[posReales].dato = strdup(real);
     return posReales++;
 }
+
+/* Impresión de tokens. */
 
 void Token(int clase, int valor) {
     switch (clase) {
@@ -2295,6 +2332,8 @@ void Token(int clase, int valor) {
     }
 }
 
+/*  Función para mostrar Tabla de símbolos */
+
 void mostrarTablaDeSimbolos(void) {
     puts("\nTabla de símbolos");
     puts("pos  nombre                 tipo");
@@ -2302,6 +2341,8 @@ void mostrarTablaDeSimbolos(void) {
         printf("%-3d  %-20s   %d\n", tabladeSimbolos[i].pos, tabladeSimbolos[i].nom, tabladeSimbolos[i].tipo);
     }
 }
+
+/* Helper para imprimir tablas de literales */
 
 static void imprimirTablaLit(const char *titulo, Literal *tab, int n) {
     printf("\n%s\n", titulo);
@@ -2311,11 +2352,15 @@ static void imprimirTablaLit(const char *titulo, Literal *tab, int n) {
     }
 }
 
+/* Muestra ambas tablas de literales (reales y cadenas) */
+
 void mostrarTablasDeLiterales(void) {
     imprimirTablaLit("Tabla de literales ctes reales",  tabladeReales,  posReales);
     imprimirTablaLit("Tabla de literales ctes cadena",  tabladeCadenas, posCadena);
 }
 
+
+/*  Función principal  */
 int main(int argc, char **argv) {
     if (argc > 1) {
         yyin = fopen(argv[1], "r");
