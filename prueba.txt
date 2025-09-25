@@ -1,16 +1,39 @@
-entero X = 5;
-flotante _y = 3@14;
-si :: x ¿: 10;
-a_ = 1;
-x += 0@;
-x ¬+ 2;
-y != 3;
-z && 4;
-select >: 8;
-"esto es un comentario válido"
-¿Cadena sin cierre
-coma , punto .
-suma = 1 + 2;
-logico \ 7;
-rel >= 9;
-a ¬+¬ b;
+cadena x1 = 10 ;
+entero var_123 += -25
+flotante y 1@2@@-3
+mientras z1 ¬+¬ 15@85@@-17
+si ( x2 >: 0 ) { ¿hola mundo? }
+ocaso select salir
+
+"Estructura para la Tabla de Símbolos"
+
+a \\ b
+c // d
+e || f
+
+
+x :: y
+x ¿: y
+x > y
+x < y
+x >: y
+x <: y
+
+
+a = b
+c *= d
+e /= f
+g += h
+i -= j
+k %= l
+m <<= n
+o >>= p
+q &= r
+s ^= t
+u |= v
+
+
+$ % ( ) { } [ ] ; .
+
+
+"este es un comentario"
