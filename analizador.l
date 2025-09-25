@@ -109,7 +109,7 @@ letra_min [a-z]
 "<<=" {   Token(3, 6); }
 ">>=" {   Token(3, 7); }
 "&=" {   Token(3, 8); }
-"^=" {   Token(3, 9); }
+"^=" {   Token(3, 9); }
 "|=" {   Token(3, 10); }
 
 
@@ -128,7 +128,7 @@ letra_min [a-z]
 
 { /* --- Operadores relacionales --- */ }
 "::" {   Token(9, 0); }
-"¿:" {   Token(9, 1); }
+"¿:" {   Token(9, 1); }
 ">" {   Token(9, 2); }
 "<" {   Token(9, 3); }
 ">:" {   Token(9, 4); }
@@ -136,7 +136,7 @@ letra_min [a-z]
 
 { /* --- Símbolos especiales --- */ }
 "$" {   Token(4, (int)'$'); }
-"%" {   Token(4, (int)'%'); }
+"%" {   Token(4, (int)'%'); }
 "(" {   Token(4, (int)'('); }
 ")" {   Token(4, (int)')'); }
 "{" {   Token(4, (int)'{'); }
