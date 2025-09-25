@@ -1,20 +1,39 @@
-"Este es un comentario inicial que debe ser ignorado por completo"
+cadena x1 = 10 ;
+entero var_123 += -25
+flotante y 1@2@@-3
+mientras z1 ¬+¬ 15@85@@-17
+si ( x2 >: 0 ) { ¿hola mundo? }
+ocaso select salir
 
-entero variable_1 = 125;
-flotante numero_real = -15@88@@+2;
-cadena saludo = ¿Hola, mundo?;
+"Estructura para la Tabla de Símbolos"
 
-si (variable_1 >: 100) {
-    entero resultado_final = 0;
-    resultado_final += variable_1;
-    "comentario intermedio"
-}
+a \\ b
+c // d
+e || f
 
-mientras ( 1 ) {
-    salir;
-}
 
-"La siguiente linea contiene un error lexico"
-entero Error_Variable = 10; "El identificador usa mayusculas"
+x :: y
+x ¿: y
+x > y
+x < y
+x >: y
+x <: y
 
-% $ // :: !=
+
+a = b
+c *= d
+e /= f
+g += h
+i -= j
+k %= l
+m <<= n
+o >>= p
+q &= r
+s ^= t
+u |= v
+
+
+$ % ( ) { } [ ] ; .
+
+
+"este es un comentario"
