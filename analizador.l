@@ -61,7 +61,7 @@ letra_min [a-z]
 
 %%
 
-/* --- Manejo de separadores --- */
+// --- Manejo de separadores ---
 [ \t\n]+ { /* Se ignora cualquier espacio, tabulador o salto de línea */ }
 
 /* --- Manejo de comentarios --- 
