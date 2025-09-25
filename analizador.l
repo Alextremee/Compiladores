@@ -61,10 +61,10 @@ letra_min [a-z]
 
 %%
 
-// --- Manejo de separadores ---
+/* --- Manejo de separadores --- */
 [ \t\n]+ { /* Se ignora cualquier espacio, tabulador o salto de línea */ }
 
-/* --- Manejo de comentarios --- 
+/* --- Manejo de comentarios --- */
    Se definen como texto entre comillas dobles */
 \"[^"\n]*\" { /* Se ignoran los comentarios entre comillas */ }
 
