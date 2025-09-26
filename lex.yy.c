@@ -603,7 +603,9 @@ int yy_flex_debug = 0;
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
 #line 1 "analizador.l"
-#line 3 "analizador.l"
+/* Opciones de flex: evita el uso de yywrap y habilita el conteo de líneas */
+/* Librerías estándar necesarias para el analizador léxico*/
+#line 8 "analizador.l"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -672,9 +674,9 @@ extern int   yylineno;
 
 static void tablaLlena(const char *msg) { fputs(msg, stderr); exit(1); }
 
-#line 676 "lex.yy.c"
-/*  Definiciones de Expresiones Regulares  */
 #line 678 "lex.yy.c"
+/*  Definiciones de Expresiones Regulares  */
+#line 680 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -891,10 +893,10 @@ YY_DECL
 		}
 
 	{
-#line 78 "analizador.l"
+#line 83 "analizador.l"
 
 
-#line 898 "lex.yy.c"
+#line 900 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -964,300 +966,300 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 /* rule 1 can match eol */
 YY_RULE_SETUP
-#line 80 "analizador.l"
+#line 85 "analizador.l"
 { } // Ignorar espacios
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 81 "analizador.l"
+#line 86 "analizador.l"
 { } // Ignorar comentario entre comillas
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 85 "analizador.l"
+#line 90 "analizador.l"
 { Token(0, 0); } // Sección de la clase 0: Palabras reservadas 
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 86 "analizador.l"
+#line 91 "analizador.l"
 { Token(0, 1); }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 87 "analizador.l"
+#line 92 "analizador.l"
 { Token(0, 2); }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 88 "analizador.l"
+#line 93 "analizador.l"
 { Token(0, 3); }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 89 "analizador.l"
+#line 94 "analizador.l"
 { Token(0, 4); }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 90 "analizador.l"
+#line 95 "analizador.l"
 { Token(0, 5); }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 91 "analizador.l"
+#line 96 "analizador.l"
 { Token(0, 6); }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 92 "analizador.l"
+#line 97 "analizador.l"
 { Token(0, 7); }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 93 "analizador.l"
+#line 98 "analizador.l"
 { Token(0, 8); }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 94 "analizador.l"
+#line 99 "analizador.l"
 { Token(0, 9); }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 95 "analizador.l"
+#line 100 "analizador.l"
 { Token(0,10); }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 96 "analizador.l"
+#line 101 "analizador.l"
 { Token(0,11); }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 97 "analizador.l"
+#line 102 "analizador.l"
 { Token(0,12); } 
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 99 "analizador.l"
-{ Token(1, atoi(yytext)); } // Constantes enteras. Formado por dígitos del 0 al 9. Puede tener signo + o -
+#line 104 "analizador.l"
+{ Token(1, atoi(yytext)); } // Sección de la clase 1: Constantes enteras.
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 101 "analizador.l"
+#line 106 "analizador.l"
 { 
     int pos = buscar(yytext);
     if (pos < 0) pos = insertarSimbolo(yytext);
     Token(2, pos);
-} // identificadores
+} // Sección de la clase 2: Identificadores
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 107 "analizador.l"
+#line 112 "analizador.l"
 {
     int idx = insertarReal(yytext);
     Token(6, idx); 
-} // Constantes Reales: 
+} //Sección de la clase 6: Constantes Reales: 
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 112 "analizador.l"
+#line 117 "analizador.l"
 {
     int idx = insertarCadena(yytext);
     Token(7, idx);
-}  // cadenas con delimitadores ¿ ?
+}  // Sección de la clase 7: Cadenas con delimitadores ¿ ?
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 117 "analizador.l"
-{ Token(3, 6); }
+#line 122 "analizador.l"
+{ Token(3, 6); } // Sección de la clase 3: Operadores de asignación 
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 118 "analizador.l"
+#line 123 "analizador.l"
 { Token(3, 7); }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 119 "analizador.l"
+#line 124 "analizador.l"
 { Token(3, 1); }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 120 "analizador.l"
+#line 125 "analizador.l"
 { Token(3, 2); }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 121 "analizador.l"
+#line 126 "analizador.l"
 { Token(3, 3); }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 122 "analizador.l"
+#line 127 "analizador.l"
 { Token(3, 4); }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 123 "analizador.l"
+#line 128 "analizador.l"
 { Token(3, 5); }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 124 "analizador.l"
+#line 129 "analizador.l"
 { Token(3, 8); }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 125 "analizador.l"
+#line 130 "analizador.l"
 { Token(3, 9); }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 126 "analizador.l"
+#line 131 "analizador.l"
 { Token(3,10); }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 127 "analizador.l"
+#line 132 "analizador.l"
 { Token(3, 0); }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 129 "analizador.l"
-{ Token(5, 0); }
+#line 134 "analizador.l"
+{ Token(5, 0); } //Sección de la clase 5: Operadores lógicos
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 130 "analizador.l"
+#line 135 "analizador.l"
 { Token(5, 1); }
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 131 "analizador.l"
+#line 136 "analizador.l"
 { Token(5, 2); }
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 133 "analizador.l"
-{ Token(8, 0); }
+#line 138 "analizador.l"
+{ Token(8, 0); } //Sección de la clase 8: Operadores aritméticos personalizados
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 134 "analizador.l"
+#line 139 "analizador.l"
 { Token(8, 1); }
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 135 "analizador.l"
+#line 140 "analizador.l"
 { Token(8, 2); }
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 136 "analizador.l"
+#line 141 "analizador.l"
 { Token(8, 3); }
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 137 "analizador.l"
+#line 142 "analizador.l"
 { Token(8, 4); }
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 138 "analizador.l"
+#line 143 "analizador.l"
 { Token(8, 5); }
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 140 "analizador.l"
-{ Token(9, 0); }
+#line 145 "analizador.l"
+{ Token(9, 0); } //Sección de la clase 9: Operadores relacionales
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 141 "analizador.l"
+#line 146 "analizador.l"
 { Token(9, 1); }
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 142 "analizador.l"
+#line 147 "analizador.l"
 { Token(9, 4); }
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 143 "analizador.l"
+#line 148 "analizador.l"
 { Token(9, 5); }
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 144 "analizador.l"
+#line 149 "analizador.l"
 { Token(9, 2); }
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 145 "analizador.l"
+#line 150 "analizador.l"
 { Token(9, 3); }
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 147 "analizador.l"
-{   Token(4, (int)'$'); }
+#line 152 "analizador.l"
+{   Token(4, (int)'$'); } //Sección de la clase 4: Símbolos especiales
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 148 "analizador.l"
+#line 153 "analizador.l"
 {   Token(4, (int)'%'); }
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 149 "analizador.l"
+#line 154 "analizador.l"
 {   Token(4, (int)'('); }
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 150 "analizador.l"
+#line 155 "analizador.l"
 {   Token(4, (int)')'); }
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 151 "analizador.l"
+#line 156 "analizador.l"
 {   Token(4, (int)'{'); }
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 152 "analizador.l"
+#line 157 "analizador.l"
 {   Token(4, (int)'}'); }
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 153 "analizador.l"
+#line 158 "analizador.l"
 {   Token(4, (int)'['); }
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 154 "analizador.l"
+#line 159 "analizador.l"
 {   Token(4, (int)']'); }
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 155 "analizador.l"
+#line 160 "analizador.l"
 {   Token(4, (int)';'); }
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 156 "analizador.l"
+#line 161 "analizador.l"
 {   Token(4, (int)'.'); }
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 158 "analizador.l"
-{ fprintf(stderr,"Error Léxico en la línea %d: %s\n",yylineno,yytext); }
+#line 163 "analizador.l"
+{ fprintf(stderr,"Error Léxico en la línea %d: %s\n",yylineno,yytext); } // Detecta cualquier otro carácter no reconocido y manda un mensaje de error
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 160 "analizador.l"
+#line 165 "analizador.l"
 ECHO;
 	YY_BREAK
-#line 1261 "lex.yy.c"
+#line 1263 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2274,10 +2276,10 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 160 "analizador.l"
+#line 165 "analizador.l"
 
 
-/* Búsqueda lineal en la tabla de símbolos  */
+/* Búsqueda en la tabla de símbolos  */
 
 int buscar(const char *id) {
     for (int i = 0; i < possimbolo; ++i) {
@@ -2373,4 +2375,3 @@ int main(int argc, char **argv) {
     if (yyin && yyin != stdin) fclose(yyin);
     return 0;
 }
-

@@ -1,4 +1,9 @@
-%option noyywrap yylineno
+/* Opciones de flex: evita el uso de yywrap y habilita el conteo de líneas */
+
+%option noyywrap yylineno   
+
+/* Librerías estándar necesarias para el analizador léxico*/
+
 %{
 #include <stdio.h>
 #include <stdlib.h>
@@ -159,7 +164,7 @@ letra_min  [a-z]
 
 %%
 
-/* Búsqueda lineal en la tabla de símbolos  */
+/* Búsqueda en la tabla de símbolos  */
 
 int buscar(const char *id) {
     for (int i = 0; i < possimbolo; ++i) {
